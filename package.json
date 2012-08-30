@@ -1,0 +1,27 @@
+{
+  "name": "jDistiller",
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib/index.js",
+  "version": "0.0.1",
+  "author": "Ben Coe <bencoe@gmail.com>",
+  "engines": [
+    "node"
+  ],
+  "description": "A crawling DSL that extracts structured information from unstructured XHTML, built on Node.js and jQuery.",
+  "keywords": [
+    "crawler",
+    "jQuery"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bcoe/jDistiller.git"
+  },
+  "dependencies": {
+    "request": ">=2.9.203",
+    "jquery": ">=1.6.3",
+    "micro-test": "1.0.0",
+    "sexy-args": ">=1.1.5"
+  }
+}
