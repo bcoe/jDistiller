@@ -59,7 +59,7 @@ new jDistiller()
 {"headline":"Obama Tries to Turn Focus to Medicare From Jobs Figures","firstParagraph":"SEMINOLE, Fla. — President Obama on Saturday began hammering away at the Republican ticket’s plans for Medicare, using a campaign swing through Florida, with its large number of retired and elderly voters, to try to turn the page from anemic employment growth, his biggest weakness, to entitlements, a Democratic strength."}
 ```
 
-An Optional Closure for Value
+An Optional Closure can be Provided for Setting Value
 --------------------------
 
 A closure can optionally be provided as the third parameter for the __set()__ method.
