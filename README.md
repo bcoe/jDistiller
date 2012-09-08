@@ -106,6 +106,11 @@ Closure Return Types
 * **strings** the last string returned by the closure will be used as the value.
 * **numbers** the last number returned by the closure will be used as the value.
 * **arrays** when an array is returned, it will be merged with all other arrays returned for the given key. The final merged array will be set as value.
+* **objects** when an object is returned, the object will be merged with all other objects returned. The final object will be used as the value.
+* **key/object-pair** this special return type allows value to be populated with an object that has dynamically generated key names.
+
+Some Examples
+-------------
 
 **Array Merging Example**
 
@@ -126,8 +131,6 @@ new jDistiller()
 ```json
 {"paragraphs": ["SEMINOLE, Fla. — President Obama on Saturday began hammering away at the Republican ticket’s...", "Kicking off a two-day bus tour through...", ...]}
 ```
-
-* **objects** when an object is returned, the object will be merged with all other objects returned. The final object will be used as the value.
 
 **Object Merging Example**
 
@@ -159,8 +162,6 @@ new jDistiller()
 ```json
 {"headlines":{"second_heading":"Taxonomy","third_heading":"History and evolution"}}
 ```
-
-* **key/object-pair** this special return type allows value to be populated with an object that has dynamically generated key names.
 
 **Key/Object-Pair Example**
 
