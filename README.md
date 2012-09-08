@@ -23,14 +23,14 @@ What is jDistiller?
 The DSL
 -------
 
-* first you create an instance of the __jDistiller__ object.
+* first you create an instance of the __jDistiller__ object:
 
 ```javascript
 var jDistiller = require('./lib').jDistiller;
 new jDistiller()
 ```
 
-* the __set()__ method is used to specify key/css-selector pairs to scrape data from.
+* the __set()__ method is used to specify key/css-selector pairs to scrape data from:
 
 ```javascript
 new jDistiller()
@@ -96,8 +96,8 @@ The closure will be passed the following values:
 Closure Return Types
 -------------------
 
-* **strings** the last string returned for a selector will be used as the value.
-* **numbers** the last number returned for a selector will be used as the value.
+* **strings** the last string returned by the closure will be used as the value.
+* **numbers** the last number returned by the closure will be used as the value.
 * **arrays** when an array is returned, it will be merged with all other arrays returned for the given key. The final merged array will be set as value.
 
 **Array Merging Example**
@@ -155,7 +155,7 @@ new jDistiller()
 
 * **key/object-pair** this special return type allows value to be populated with an object that has dynamically generated key names.
 
-**Key Object Pair Example**
+**Key/Object-Pair Example**
 
 ```javascript
 var jDistiller = require('./lib').jDistiller;
