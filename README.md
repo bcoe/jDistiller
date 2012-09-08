@@ -40,7 +40,7 @@ new jDistiller()
 
 * when the __distill()__ method is called, with an URL as input, a JavaScript object will be returned populated with the scraped data.
 
-**Simple Key/CSS-Selector Pair DSL**
+**Simple Example (New York Times)**
 
 ```javascript
 var jDistiller = require('./lib').jDistiller;
