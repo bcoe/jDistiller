@@ -36,7 +36,7 @@ new jDistiller()
 	.set('firstParagraph', '#article .articleBody p:first');
 ```
 
-* when the __distill()__ method is called with a URL as input, a JavaScript object will be returned populated with the scraped data.
+* when the __distill()__ method is called, with an URL as input, a JavaScript object will be returned populated with the scraped data.
 
 **Simple Key/CSS-Selector Pair DSL**
 
@@ -60,11 +60,11 @@ new jDistiller()
 An Optional Closure for Value
 --------------------------
 
-A closure can optionally be provided as the third parameter to the __set()__ method.
+A closure can optionally be provided as the third parameter for the __set()__ method.
 
 If a closure is given, the return value of the closure will be set as a key's value, rather than the text value of the selector.
 
-**DSL**
+**DSL Using Optional Closure**
 
 ```javascript
 var jDistiller = require('./lib').jDistiller;
@@ -85,10 +85,6 @@ new jDistiller()
 ```json
 {"headline":"Obama Tries to Turn Focus to Medicare From Jobs Figures","firstParagraph":"SEMINOLE, Fla. — President Obama on Saturday began hammering away at the Republican ticket’s plans for Medicare, using a campaign swing through Florida, with its large number of retired and elderly voters, to try to turn the page from anemic employment growth, his biggest weakness, to entitlements, a Democratic strength.","image":"http://graphics8.nytimes.com/images/2012/09/09/us/JP-CANDIDATE-1/JP-CANDIDATE-1-articleLarge.jpg"}
 ```
-
-Inputs to Closure
---------------
-
 The closure will be passed the following values.
 
 * **element:** a jQuery element matching the CSS selector specified in __set()__.
