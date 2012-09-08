@@ -21,11 +21,24 @@ What is jDistiller?
 The DSL
 -------
 
-The __set()__ method is used on an instance of jDistiller, to specify __Key/CSS Selector__ pairs.
+* you first create an instance of the __jDistiller__ object.
 
-When the __distill()__ method is called, a JavaScript object will be returned populated with the text values of the CSS selectors.
+```javascript
+var jDistiller = require('./lib').jDistiller;
+new jDistiller()
+```
 
-Key/CSS Selector Pairs
+* the __set()__ method is used to specify key/css selector pairs to extract from a page.
+
+```javascript
+new jDistiller()
+	.set('headline', '#article h1.articleHeadline')
+	.set('firstParagraph', '#article .articleBody p:first');
+```
+
+* when the __distill()__ method is called with a URL as input, a JavaScript object will be returned populated with the scraped data.
+
+jDistiller in Action
 ----------------------
 
 **DSL**
