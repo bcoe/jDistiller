@@ -1,7 +1,7 @@
 var equal = require('assert').equal,
 	fs = require('fs'),
 	jDistiller = require('../lib').jDistiller,
-	jQuery = require('jQuery');
+	jQuery = require('jquery');
 
 var dogArticle = fs.readFileSync('./fixtures/dog.html').toString(),
 	mockRequest = function(params, callback) {
