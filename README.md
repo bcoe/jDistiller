@@ -88,11 +88,29 @@ The closure will be passed the following values.
 Closure Return Types
 -------------------
 
-* **strings** when a string is returned, the string will be set as the value
-* **numbers** when a number is returned, the number will be set as the value.
+* **strings** the last string returned for a selector will be used as the value.
+* **numbers** the last number returned for a selector will be used as the value.
 * **arrays** when an array is returned, it will be merged with all other arrays returned for the given key. The final merged array will be set as value.
 
 **Array Merging Example**
+
+```javascript
+var jDistiller = require('./lib').jDistiller;
+
+new jDistiller()
+	.set('paragraphs', '#article .articleBody p', function(element) {
+		return [element.text()]
+	})
+	.distill('http://www.nytimes.com/2012/09/09/us/politics/obama-and-romney-battle-for-votes-in-2-swing-states.html?_r=1&hp', function(err, distilledPage) {
+		console.log(JSON.stringify(distilledPage))
+	});
+```
+
+**output**
+
+```json
+{paragraphs: ["SEMINOLE, Fla. — President Obama on Saturday began hammering away at the Republican ticket’s...", "Kicking off a two-day bus tour through...", ...]}
+```
 
 * **objects** when an object is returned, the object will be merged with all other objects returned. The final object will be used as the value.
 
