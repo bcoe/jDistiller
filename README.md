@@ -1,13 +1,13 @@
 jDistiller
 =========
 
-Over my past couple years in the industry, there have been many times where I need to scrape structured information from (relatively) unstructured XHTML websites.
+Over my past couple years in the industry, there have been several times where I need to scrape structured information from (relatively) unstructured XHTML websites.
 
 My approach to doing this has gradually evolved to include the following technologies:
 
-* [Node.js](http://nodejs.org/).
-* [jQuery](http://jquery.com/).
-* [Request](https://github.com/mikeal/request).
+* [Node.js](http://nodejs.org/)
+* [jQuery](http://jquery.com/)
+* [Request](https://github.com/mikeal/request)
 
 I was starting to notice a lot of code duplication in my scraping scripts. enter jDistiller:
 
