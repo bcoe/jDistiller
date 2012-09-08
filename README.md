@@ -73,7 +73,7 @@ A closure can optionally be provided as the third parameter for the __set()__ me
 
 If a closure is given, the return value of the closure will be set as a key's value, rather than the text value of the selector.
 
-**DSL Using Optional Closure**
+**DSL Using an Optional Data Processing Closure**
 
 ```javascript
 var jDistiller = require('./lib').jDistiller;
