@@ -9,7 +9,7 @@ My approach to doing this has gradually evolved to include the following technol
 * [jQuery](http://jquery.com/)
 * [Request](https://github.com/mikeal/request)
 
-I was starting to notice a lot of code duplication in my scraping scripts. enter jDistiller:
+I was starting to notice a lot of code duplication in my scraping scripts, enter jDistiller:
 
 What is jDistiller?
 ------------------
