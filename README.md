@@ -33,7 +33,7 @@ The DSL
 * first you create an instance of the __jDistiller__ object:
 
 ```javascript
-var jDistiller = require('./lib').jDistiller;
+var jDistiller = require('jdistiller').jDistiller;
 new jDistiller()
 ```
 
@@ -50,7 +50,7 @@ new jDistiller()
 **Simple Example (New York Times)**
 
 ```javascript
-var jDistiller = require('./lib').jDistiller;
+var jDistiller = require('jdistiller').jDistiller;
 
 new jDistiller()
 	.set('headline', '#article h1.articleHeadline')
@@ -76,7 +76,7 @@ If a closure is given, the return value of the closure will be set as a key's va
 **DSL Using an Optional Data Processing Closure**
 
 ```javascript
-var jDistiller = require('./lib').jDistiller;
+var jDistiller = require('jdistiller').jDistiller;
 
 new jDistiller()
 	.set('headline', '#article h1.articleHeadline')
@@ -115,7 +115,7 @@ Some Examples
 **Array Merging Example**
 
 ```javascript
-var jDistiller = require('./lib').jDistiller;
+var jDistiller = require('jdistiller').jDistiller;
 
 new jDistiller()
 	.set('paragraphs', '#article .articleBody p', function(element) {
@@ -135,7 +135,7 @@ new jDistiller()
 **Object Merging Example**
 
 ```javascript
-var jDistiller = require('./lib').jDistiller;
+var jDistiller = require('jdistiller').jDistiller;
 
 new jDistiller()
 	.set('headlines', '.mw-headline', function(element) {
@@ -166,7 +166,7 @@ new jDistiller()
 **Key/Object-Pair Example**
 
 ```javascript
-var jDistiller = require('./lib').jDistiller;
+var jDistiller = require('jdistiller').jDistiller;
 
 new jDistiller()
 	.set('links', '#bodyContent p a', function(element, prev) {
