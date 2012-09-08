@@ -28,7 +28,7 @@ var jDistiller = require('./lib').jDistiller;
 new jDistiller()
 ```
 
-* the __set()__ method is used to specify key/css-selector pairs to extract from an external website.
+* the __set()__ method is used to specify key/css-selector pairs to scrape data from.
 
 ```javascript
 new jDistiller()
