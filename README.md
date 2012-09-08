@@ -21,12 +21,14 @@ What is jDistiller?
 The DSL
 -------
 
-The __set()__ method is used on an instance of jDistiller, to specify __key/CSS Selector__ pairs.
+The __set()__ method is used on an instance of jDistiller, to specify __Key/CSS Selector__ pairs.
 
-When the __distill()__ method is called, a JavaScript object will be returned populated with the values of the CSS selector.
+When the __distill()__ method is called, a JavaScript object will be returned populated with the text values of the CSS selectors.
 
 Key/CSS Selector Pairs
 ----------------------
+
+**DSL**
 
 ```javascript
 var jDistiller = require('./lib').jDistiller;
@@ -45,12 +47,14 @@ new jDistiller()
 {"headline":"Obama Tries to Turn Focus to Medicare From Jobs Figures","firstParagraph":"SEMINOLE, Fla. — President Obama on Saturday began hammering away at the Republican ticket’s plans for Medicare, using a campaign swing through Florida, with its large number of retired and elderly voters, to try to turn the page from anemic employment growth, his biggest weakness, to entitlements, a Democratic strength."}
 ```
 
+An Optional Closure for Value
+--------------------------
+
 A closure can optionally be provided as the third parameter to the __set()__ method.
 
 If a closure is given, the return value of the closure will be set as a key's value. rather than the text value of the selector.
 
-Optional Closure for Value
---------------------------
+**DSL**
 
 ```javascript
 var jDistiller = require('./lib').jDistiller;
