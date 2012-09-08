@@ -81,6 +81,23 @@ Inputs to Closure
 
 The closure will be passed the following values.
 
-* **element** a jQuery element matching the CSS selector specified in __set()__.
-* **prev** if multiple elements on the page match the selector, the closure is will be executed once for each. __prev__ can be used to interact with the object created by previous invocations of the closure, e.g., we might want to increment a counter if the same link occurs multiple times on the same page.
-* **this** the state is shared between multiple executions of the same closure (see __examples/wikipedia.js__, to get an idea of why this is useful).
+* **element:** a jQuery element matching the CSS selector specified in __set()__.
+* **prev:** if multiple elements on the page match the selector, the closure is will be executed once for each. __prev__ can be used to interact with the object created by previous executions of the closure. As an example, we might want to increment a counter if the same link occurs multiple times on the same page.
+* **this:** the state is shared between multiple executions of the same closure (see __examples/wikipedia.js__, to get an idea of why this is useful).
+
+Closure Return Types
+-------------------
+
+* **strings** when a string is returned, the string will be set as the value
+* **numbers** when a number is returned, the number will be set as the value.
+* **arrays** when an array is returned, it will be merged with all other arrays returned for the given key. The final merged array will be set as value.
+
+**Array Merging Example**
+
+* **objects** when an object is returned, the object will be merged with all other objects returned. The final object will be used as the value.
+
+**Object Merging Example**
+
+* **key/object pair**
+
+**Key Object Pair Example**
