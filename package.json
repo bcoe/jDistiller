@@ -1,5 +1,5 @@
 {
-  "name": "jDistiller",
+  "name": "jdistiller",
   "directories": {
     "lib": "./lib"
   },
@@ -9,7 +9,7 @@
   "engines": [
     "node"
   ],
-  "description": "A crawling DSL that extracts structured information from unstructured XHTML, built on Node.js and jQuery.",
+  "description": "A page scraping DSL for extracting structured information from unstructured XHTML, built on Node.js and jQuery.",
   "keywords": [
     "crawler",
     "jQuery"
