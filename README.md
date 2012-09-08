@@ -20,6 +20,13 @@ What is jDistiller?
 * it is built on jQuery and Node.js.
 * it grows out of my experiences, having built several one-off page scrapers.
 
+Installation
+-----------
+
+```bash
+npm install jdistiller
+```
+
 The DSL
 -------
 
