@@ -14,7 +14,7 @@ I was starting to notice a lot of code duplication in my scraping scripts. enter
 What is jDistiller?
 ------------------
 
-* jDistiller is a powerful, clean DSL for extracting structured information from XHTML websites.
+* jDistiller is a simple and powerful DSL for extracting structured information from XHTML websites.
 * it is built on jQuery and Node.js.
 * it grows out of my experiences, having built several one-off page scrapers.
 
