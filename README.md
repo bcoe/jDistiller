@@ -52,7 +52,7 @@ An Optional Closure for Value
 
 A closure can optionally be provided as the third parameter to the __set()__ method.
 
-If a closure is given, the return value of the closure will be set as a key's value. rather than the text value of the selector.
+If a closure is given, the return value of the closure will be set as a key's value, rather than the text value of the selector.
 
 **DSL**
 
@@ -76,9 +76,11 @@ new jDistiller()
 {"headline":"Obama Tries to Turn Focus to Medicare From Jobs Figures","firstParagraph":"SEMINOLE, Fla. — President Obama on Saturday began hammering away at the Republican ticket’s plans for Medicare, using a campaign swing through Florida, with its large number of retired and elderly voters, to try to turn the page from anemic employment growth, his biggest weakness, to entitlements, a Democratic strength.","image":"http://graphics8.nytimes.com/images/2012/09/09/us/JP-CANDIDATE-1/JP-CANDIDATE-1-articleLarge.jpg"}
 ```
 
-Closure Inputs
+Inputs to Closure
 --------------
 
-* **element**
-* **prev**
-* **this**
+The closure will be passed the following values.
+
+* **element** a jQuery element matching the CSS selector specified in __set()__.
+* **prev** if multiple elements on the page match the selector, the closure is will be executed once for each. __prev__ can be used to interact with the object created by previous invocations of the closure, e.g., we might want to increment a counter if the same link occurs multiple times on the same page.
+* **this** the state is shared between multiple executions of the same closure (see __examples/wikipedia.js__, to get an idea of why this is useful).
