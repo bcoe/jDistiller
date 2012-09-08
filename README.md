@@ -180,11 +180,11 @@ new jDistiller()
 {"links":{"#cite_note-MSW3_Lupus-1":{"title":"","href":"#cite_note-MSW3_Lupus-1","occurrences":1},"#cite_note-ADW-2":{"title":"","href":"#cite_note-ADW-2","occurrences":1},"/wiki/Gray_wolf_subspecies":{"title":"Gray wolf subspecies","href":"/wiki/Gray_wolf_subspecies","occurrences":1},"/wiki/Gray_wolf":{"title":"Gray wolf","href":"/wiki/Gray_wolf","occurrences":1},"/wiki/Canidae":{"title":"Canidae","href":"/wiki/Canidae","occurrences":1}}}
 ```
 
-Conclusion
+That's About It
 ----------
 
-I'm excited about jDistiller, I think it has the potential to solve an annoying class of problems. 
+I'm excited about jDistiller, I think it solves the scraping problem in an elegant way.
 
-Don't be shy with your feedback and/or contributions.
+Don't be shy with your feedback, and please contribute.
 
 -- Ben [@benjamincoe](https://twitter.com/#/benjamincoe)
