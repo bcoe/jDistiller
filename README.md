@@ -21,14 +21,14 @@ What is jDistiller?
 The DSL
 -------
 
-* you first create an instance of the __jDistiller__ object.
+* first you create an instance of the __jDistiller__ object.
 
 ```javascript
 var jDistiller = require('./lib').jDistiller;
 new jDistiller()
 ```
 
-* the __set()__ method is used to specify key/css selector pairs to extract from a page.
+* the __set()__ method is used to specify key/css-selector pairs to extract from an external website.
 
 ```javascript
 new jDistiller()
@@ -38,10 +38,7 @@ new jDistiller()
 
 * when the __distill()__ method is called with a URL as input, a JavaScript object will be returned populated with the scraped data.
 
-jDistiller in Action
-----------------------
-
-**DSL**
+**Simple Key/CSS-Selector Pair DSL**
 
 ```javascript
 var jDistiller = require('./lib').jDistiller;
