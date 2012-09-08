@@ -1,6 +1,8 @@
 jDistiller
 =========
 
+**Author:** [@benjamincoe](https://twitter.com/#/benjamincoe)
+
 Over my past couple years in the industry, there have been several times where I need to scrape structured information from (relatively) unstructured XHTML websites.
 
 My approach to doing this has gradually evolved to include the following technologies:
@@ -85,7 +87,7 @@ new jDistiller()
 ```json
 {"headline":"Obama Tries to Turn Focus to Medicare From Jobs Figures","firstParagraph":"SEMINOLE, Fla. — President Obama on Saturday began hammering away at the Republican ticket’s plans for Medicare, using a campaign swing through Florida, with its large number of retired and elderly voters, to try to turn the page from anemic employment growth, his biggest weakness, to entitlements, a Democratic strength.","image":"http://graphics8.nytimes.com/images/2012/09/09/us/JP-CANDIDATE-1/JP-CANDIDATE-1-articleLarge.jpg"}
 ```
-The closure will be passed the following values.
+The closure will be passed the following values:
 
 * **element:** a jQuery element matching the CSS selector specified in __set()__.
 * **prev:** if multiple elements on the page match the selector, the closure is will be executed once for each. __prev__ can be used to interact with the object created by previous executions of the closure. As an example, we might want to increment a counter if the same link occurs multiple times on the same page.
@@ -151,6 +153,38 @@ new jDistiller()
 {"headlines":{"second_heading":"Taxonomy","third_heading":"History and evolution"}}
 ```
 
-* **key/object pair**
+* **key/object-pair** this special return type allows value to be populated with an object that has dynamically generated key names.
 
 **Key Object Pair Example**
+
+```javascript
+var jDistiller = require('./lib').jDistiller;
+
+new jDistiller()
+	.set('links', '#bodyContent p a', function(element, prev) {
+		var key = element.attr('href');
+		return [key, {
+			title: element.attr('title'),
+			href: key,
+			occurrences: prev[key] ? prev[key].occurrences + 1 : 1
+		}]
+	})
+	.distill('http://en.wikipedia.org/wiki/Dog', function(err, distilledPage) {
+		console.log(JSON.stringify(distilledPage));
+	});
+```
+
+**Output**
+
+```json
+{"links":{"#cite_note-MSW3_Lupus-1":{"title":"","href":"#cite_note-MSW3_Lupus-1","occurrences":1},"#cite_note-ADW-2":{"title":"","href":"#cite_note-ADW-2","occurrences":1},"/wiki/Gray_wolf_subspecies":{"title":"Gray wolf subspecies","href":"/wiki/Gray_wolf_subspecies","occurrences":1},"/wiki/Gray_wolf":{"title":"Gray wolf","href":"/wiki/Gray_wolf","occurrences":1},"/wiki/Canidae":{"title":"Canidae","href":"/wiki/Canidae","occurrences":1}}}
+```
+
+Conclusion
+----------
+
+I'm excited about jDistiller, I think it has the potential to solve an annoying class of problems. 
+
+Don't be shy with your feedback and/or contributions.
+
+-- Ben [@benjamincoe](https://twitter.com/#/benjamincoe)
