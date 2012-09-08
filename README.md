@@ -14,7 +14,7 @@ I was starting to notice a lot of code duplication in my scraping scripts, enter
 What is jDistiller?
 ------------------
 
-* jDistiller is a simple and powerful DSL for extracting structured information from XHTML websites.
+* jDistiller is a simple and powerful DSL for scraping structured information from XHTML websites.
 * it is built on jQuery and Node.js.
 * it grows out of my experiences, having built several one-off page scrapers.
 
@@ -115,12 +115,41 @@ new jDistiller()
 **output**
 
 ```json
-{paragraphs: ["SEMINOLE, Fla. — President Obama on Saturday began hammering away at the Republican ticket’s...", "Kicking off a two-day bus tour through...", ...]}
+{"paragraphs": ["SEMINOLE, Fla. — President Obama on Saturday began hammering away at the Republican ticket’s...", "Kicking off a two-day bus tour through...", ...]}
 ```
 
 * **objects** when an object is returned, the object will be merged with all other objects returned. The final object will be used as the value.
 
 **Object Merging Example**
+
+```javascript
+var jDistiller = require('./lib').jDistiller;
+
+new jDistiller()
+	.set('headlines', '.mw-headline', function(element) {
+		this.count = this.count || 0;
+		this.count ++;
+		if (this.count === 2) {
+			return {
+				'second_heading': element.text().trim()
+			}
+		}
+		if (this.count === 3) {
+			return {
+				'third_heading': element.text().trim()
+			}
+		}
+	})
+	.distill('http://en.wikipedia.org/wiki/Dog', function(err, distilledPage) {
+		console.log(JSON.stringify(distilledPage));
+	});
+```
+
+**Output**
+
+```json
+{"headlines":{"second_heading":"Taxonomy","third_heading":"History and evolution"}}
+```
 
 * **key/object pair**
 

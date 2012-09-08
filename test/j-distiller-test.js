@@ -35,6 +35,28 @@ exports.tests = {
 						finished();
 					});
 		},
+		'set() with a closure returning an object merges object keys': function(finished, prefix) {
+				new jDistiller({request: mockRequest})
+					.set('headlines', '.mw-headline', function(element) {
+						this.count = this.count || 0;
+						this.count ++;
+						if (this.count === 2) {
+							return {
+								'second_heading': element.text().trim()
+							}
+						}
+						if (this.count === 3) {
+							return {
+								'third_heading': element.text().trim()
+							}
+						}
+					})
+					.distill('http://www.example.com', function(err, distilledPage) {
+						equal(distilledPage.headlines['second_heading'], jQuery( page.find('.mw-headline')[1] ).text(), prefix + ' third headline not found.');
+						equal(distilledPage.headlines['third_heading'], jQuery( page.find('.mw-headline')[2] ).text(), prefix + ' third headline not found.');
+						finished();
+					});
+		},
 		'set() with a closure returning an array merges arrays together and sets an array value on the distilled page': function(finished, prefix) {
 				new jDistiller({request: mockRequest})
 					.set('headlines', '.mw-headline', function(element) {
