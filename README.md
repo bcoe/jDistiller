@@ -103,11 +103,11 @@ The closure will be passed the following values:
 Closure Return Types
 -------------------
 
-* **strings** the last string returned by the closure will be used as the value.
-* **numbers** the last number returned by the closure will be used as the value.
-* **arrays** when an array is returned, it will be merged with all other arrays returned for the given key. The final merged array will be set as value.
-* **objects** when an object is returned, the object will be merged with all other objects returned. The final object will be used as the value.
-* **key/object-pair** this special return type allows value to be populated with an object that has dynamically generated key names.
+* **strings:** the last string returned by the closure will be used as the value.
+* **numbers:** the last number returned by the closure will be used as the value.
+* **arrays:** when an array is returned, it will be merged with all other arrays returned for the given key. The final merged array will be set as value.
+* **objects:** when an object is returned, the object will be merged with all other objects returned. The final object will be used as the value.
+* **key/object-pair:** this special return type allows value to be populated with an object that has dynamically generated key names.
 
 Some Examples
 -------------
