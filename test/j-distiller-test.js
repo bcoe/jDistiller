@@ -98,5 +98,23 @@ exports.tests = {
 						equal(linkCount, page.find('#bodyContent p a').length, prefix + ' previous object was not set.');
 						finished();
 					});
+		},
+		'distill() method accepts a buffer rather than a url': function(finished, prefix) {	
+				new jDistiller({request: mockRequest})
+					.set('title', '#firstHeading span')
+					.set('firstHeadline', '.mw-headline:first')
+					.distill(fs.readFileSync('./fixtures/dog.html'), function(err, distilledPage) {
+						equal(distilledPage.title, page.find('#firstHeading span').text(), prefix + ' title was not parsed.');
+						equal(distilledPage.firstHeadline, page.find('.mw-headline:first').text(), prefix + ' first heading was not parsed.');
+						finished();
+					});
+		},
+		'distill() method accepts a string rather than a url': function(finished, prefix) {	
+				new jDistiller({request: mockRequest})
+					.set('title', '.title')
+					.distill('<html><body><h1 class="title">Hello World!</h1></body></html>', function(err, distilledPage) {
+						equal(distilledPage.title, 'Hello World!', prefix + ' title was not parsed.');
+						finished();
+					});
 		}
 }
