@@ -83,7 +83,8 @@ exports.tests = {
 		'the previous object manipulated is passed into the closure as a parameter': function(finished, prefix) {
 				new jDistiller({request: mockRequest})
 					.set('links', '#bodyContent p a', function(element, prev) {
-						var key = element.attr('href');
+						var key
+						 = element.attr('href');
 						return [key, {
 							title: element.attr('title'),
 							href: key,
