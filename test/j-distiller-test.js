@@ -124,5 +124,16 @@ exports.tests = {
 					equal(distilledPage.title, 'Hello World!', prefix + ' title was not parsed.');
 					finished();
 				});
+		},
+		'this.distilledSoFar() returns the partially distilled page': function(finished, prefix) {
+				new jDistiller({request: mockRequest})
+					.set('title', '#firstHeading span')
+					.set('firstHeadline', '.mw-headline:first', function() {
+						equal(this.distilledSoFar().title, page.find('#firstHeading span').text(), prefix + ' title was not parsed.');
+					})
+					.distill('http://www.example.com', function(err, distilledPage) {
+						if (err) throw err;
+						finished();
+					});
 		}
-}
+};
