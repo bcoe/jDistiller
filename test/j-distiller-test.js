@@ -20,6 +20,15 @@ exports.tests = {
         finished();
       });
   },
+  'set() with a DOM selector that matches multiple elements should combine text': function(finished, prefix) {
+    new jDistiller({request: mockRequest})
+      .set('h2Text', 'h2')
+      .distill('http://www.example.com', function(err, distilledPage) {
+        equal(distilledPage.h2Text.indexOf('Contents') > -1, true);
+        equal(distilledPage.h2Text.indexOf('Etymology and related terminology') > -1, true);
+        finished();
+      });
+  },
   'set() with a closure returning strings sets a string value on the distilled page': function(finished, prefix) {
     new jDistiller({request: mockRequest})
       .set('headline3', '.mw-headline', function(element) {
