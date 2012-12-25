@@ -29,6 +29,14 @@ exports.tests = {
         finished();
       });
   },
+  'set() when an element is not found it should default to an empty string': function(finished, prefix) {
+    new jDistiller({request: mockRequest})
+      .set('h2Text', '.banana')
+      .distill('http://www.example.com', function(err, distilledPage) {
+        equal('', distilledPage.h2Text);
+        finished();
+      });
+  },
   'set() with a closure returning strings sets a string value on the distilled page': function(finished, prefix) {
     new jDistiller({request: mockRequest})
       .set('headline3', '.mw-headline', function(element) {
