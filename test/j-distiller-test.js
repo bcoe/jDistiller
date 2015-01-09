@@ -1,22 +1,23 @@
 var equal = require('assert').equal,
+  eq = require('../lib/eq'),
   fs = require('fs'),
   jDistiller = require('../lib').jDistiller,
-  jQuery = require('jquery');
+  cheerio = eq.wrap(require('cheerio'));
 
 var dogArticle = fs.readFileSync('./fixtures/dog.html').toString(),
   mockRequest = function(params, callback) {
     callback(null, {statusCode: 200}, dogArticle);
   },
-  page = jQuery(dogArticle);
+  page = cheerio.load(dogArticle);
 
 exports.tests = {
-  'set() set with a DOM selector and no closure sets a value on the distlled page equal to text() of the selector': function(finished, prefix) {	
+  'set() set with a DOM selector and no closure sets a value on the distlled page equal to text() of the selector': function(finished, prefix) {
     new jDistiller({request: mockRequest})
       .set('title', '#firstHeading span')
       .set('firstHeadline', '.mw-headline:first')
       .distill('http://www.example.com', function(err, distilledPage) {
-        equal(distilledPage.title, page.find('#firstHeading span').text(), prefix + ' title was not parsed.');
-        equal(distilledPage.firstHeadline, page.find('.mw-headline:first').text(), prefix + ' first heading was not parsed.');
+        equal(distilledPage.title, page('#firstHeading span').text(), prefix + ' title was not parsed.');
+        equal(distilledPage.firstHeadline, page('.mw-headline:first').text(), prefix + ' first heading was not parsed.');
         finished();
       });
   },
@@ -48,7 +49,7 @@ exports.tests = {
         }
       })
       .distillURL('http://www.example.com', function(err, distilledPage) {
-        equal(distilledPage.headline3, jQuery( page.find('.mw-headline')[2] ).text(), prefix + ' third headline not found.');
+        equal(distilledPage.headline3, page('.mw-headline').eq(2).text(), prefix + ' third headline not found.');
         finished();
       });
   },
@@ -69,8 +70,8 @@ exports.tests = {
         }
       })
       .distill('http://www.example.com', function(err, distilledPage) {
-        equal(distilledPage.headlines['second_heading'], jQuery( page.find('.mw-headline')[1] ).text(), prefix + ' third headline not found.');
-        equal(distilledPage.headlines['third_heading'], jQuery( page.find('.mw-headline')[2] ).text(), prefix + ' third headline not found.');
+        equal(distilledPage.headlines['second_heading'], page('.mw-headline').eq(1).text(), prefix + ' third headline not found.');
+        equal(distilledPage.headlines['third_heading'], page('.mw-headline').eq(2).text(), prefix + ' third headline not found.');
         finished();
       });
   },
@@ -80,7 +81,7 @@ exports.tests = {
         return [element.text().trim()];
       })
       .distill('http://www.example.com', function(err, distilledPage) {
-        equal(distilledPage.headlines.length, page.find('.mw-headline').length, prefix + ' did not parse all headlines.');
+        equal(distilledPage.headlines.length, page('.mw-headline').length, prefix + ' did not parse all headlines.');
         finished();
       });
   },
@@ -112,17 +113,17 @@ exports.tests = {
         Object.keys(distilledPage.links).forEach(function(link) {
           linkCount += distilledPage.links[link].occurrences;
         });
-        equal(linkCount, page.find('#bodyContent p a').length, prefix + ' previous object was not set.');
+        equal(linkCount, page('#bodyContent p a').length, prefix + ' previous object was not set.');
         finished();
       });
   },
-  'distill() method accepts a buffer rather than a url': function(finished, prefix) {	
+  'distill() method accepts a buffer rather than a url': function(finished, prefix) {
     new jDistiller({request: mockRequest})
       .set('title', '#firstHeading span')
       .set('firstHeadline', '.mw-headline:first')
       .distill(fs.readFileSync('./fixtures/dog.html'), function(err, distilledPage) {
-        equal(distilledPage.title, page.find('#firstHeading span').text(), prefix + ' title was not parsed.');
-        equal(distilledPage.firstHeadline, page.find('.mw-headline:first').text(), prefix + ' first heading was not parsed.');
+        equal(distilledPage.title, page('#firstHeading span').text(), prefix + ' title was not parsed.');
+        equal(distilledPage.firstHeadline, page('.mw-headline:first').text(), prefix + ' first heading was not parsed.');
         finished();
       });
   },
@@ -137,7 +138,7 @@ exports.tests = {
   'distill() method accepts a jQuery object rather than a url': function(finished, prefix) {
     new jDistiller({request: mockRequest})
       .set('title', '.title')
-      .distillJQuery(jQuery('<html><body><h1 class="title">Hello World!</h1></body></html>'), function(err, distilledPage) {
+      .distillJQuery(cheerio.load('<html><body><h1 class="title">Hello World!</h1></body></html>'), function(err, distilledPage) {
         equal(distilledPage.title, 'Hello World!', prefix + ' title was not parsed.');
         finished();
       });
@@ -146,7 +147,7 @@ exports.tests = {
     new jDistiller({request: mockRequest})
       .set('title', '#firstHeading span')
       .set('firstHeadline', '.mw-headline:first', function() {
-        equal(this.distilledSoFar().title, page.find('#firstHeading span').text(), prefix + ' title was not parsed.');
+        equal(this.distilledSoFar().title, page('#firstHeading span').text(), prefix + ' title was not parsed.');
       })
       .distill('http://www.example.com', function(err, distilledPage) {
         if (err) throw err;

@@ -42,7 +42,7 @@ new jDistiller()
 ```javascript
 new jDistiller()
 	.set('headline', '#article h1.articleHeadline')
-	.set('firstParagraph', '#article .articleBody p:first');
+	.set('firstParagraph', '#article .articleBody p:eq(0)');
 ```
 
 * when the __distill()__ method is called, with an URL as input, a JavaScript object will be returned populated with the scraped data.
@@ -54,7 +54,7 @@ var jDistiller = require('jdistiller').jDistiller;
 
 new jDistiller()
 	.set('headline', '#article h1.articleHeadline')
-	.set('firstParagraph', '#article .articleBody p:first')
+	.set('firstParagraph', '#article .articleBody p:eq(0)')
 	.distill('http://www.nytimes.com/2012/09/09/us/politics/obama-and-romney-battle-for-votes-in-2-swing-states.html?_r=1&hp', function(err, distilledPage) {
 		console.log(JSON.stringify(distilledPage))
 	});
@@ -80,7 +80,7 @@ var jDistiller = require('jdistiller').jDistiller;
 
 new jDistiller()
 	.set('headline', '#article h1.articleHeadline')
-	.set('firstParagraph', '#article .articleBody p:first')
+	.set('firstParagraph', '#article .articleBody p:eq(0)')
 	.set('image', '#article .articleBody .articleSpanImage img', function(element, prev) {
 		return element.attr('src')
 	})
