@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "cheerio": "^0.18.0",
-    "micro-test": "1.0.0",
     "request": "^2.51.0",
     "sexy-args": ">=1.1.5"
   },
